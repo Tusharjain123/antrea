@@ -129,6 +129,11 @@ func run(o *Options) error {
 	if err != nil {
 		return fmt.Errorf("error creating K8s clients: %v", err)
 	}
+
+	// Getting the POD Name
+	klog.InfoS("", "GitHub Username: ", "Tusharjain123")
+	klog.InfoS("", "POD_Name: ", env.GetPodName())
+
 	k8s.OverrideKubeAPIServer(o.config.KubeAPIServerOverride)
 	informerFactory := informers.NewSharedInformerFactory(client, informerDefaultResync)
 	crdInformerFactory := crdinformers.NewSharedInformerFactory(crdClient, informerDefaultResync)
